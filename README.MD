@@ -7,16 +7,7 @@ How to Use
 ===================
 Follow the below simple steps to add the library into your project.
 
-1. Add [file_provider.xml](https://github.com/ravi8x/Android-Image-Picker-and-Cropping/blob/master/app/src/main/res/xml/file_paths.xml) to your **res -> xml** foler.
-```
-<?xml version="1.0" encoding="utf-8"?>
-<paths>
-    <external-cache-path
-        name="cache"
-        path="camera" />
-</paths>
-```
-2. In [AndroidManifext.xml](https://github.com/ravi8x/Android-Image-Picker-and-Cropping/blob/master/app/src/main/AndroidManifest.xml), add **CAMERA**, **DEXTER** and **STORAGE** permissions. Add **UCrop** activity and **FileProvider** paths.
+1. In [AndroidManifext.xml](https://github.com/Hardik8184/Android-Image-Choose-and-Crop/blob/master/app/src/main/AndroidManifest.xml), add **CAMERA**, **DEXTER** and **STORAGE** permissions. Add **UCrop** activity and **FileProvider** paths.
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -69,7 +60,22 @@ Follow the below simple steps to add the library into your project.
 
 </manifest>
 ```
-5. Add **Dexter** and **uCrop** dependencies to your **app/build.gradle**
+
+2. Add [file_provider.xml](https://github.com/Hardik8184/Android-Image-Choose-and-Crop/blob/master/app/src/main/res/xml/file_paths.xml) to your **res -> xml** foler.
+```
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-cache-path
+        name="cache"
+        path="camera" />
+</paths>
+```
+
+uCrop
+---
+Thanks to [Yalantis](https://github.com/Yalantis) for providing such a beautiful cropping ([uCrop](https://github.com/Yalantis/uCrop)) library. This example uses the uCrop library for cropping functionality.
+
+3. Add **Dexter** and **uCrop** dependencies to your **app/build.gradle**
 ```gradle
 dependencies {
     //...
@@ -78,11 +84,10 @@ dependencies {
     implementation 'com.github.yalantis:ucrop:2.2.2'
 }
 ```
-6. Copy [ImagePickerActivity.kt](https://github.com/Hardik8184/Android-Image-Choose-and-Crop/blob/master/app/src/main/java/dev/hardik/imagepicker/ImagePickerActivity.kt) to your project.
+4. Copy [ImagePickerActivity.kt](https://github.com/Hardik8184/Android-Image-Choose-and-Crop/blob/master/app/src/main/java/dev/hardik/imagepicker/ImagePickerActivity.kt) to your project.
 
-7. Launch **ImagePickerActivity** by passing required intent data. Once the image is cropped, you can received the path of the cropped image in **onActivityResult** method.
-```kotlin
-
+5. Launch **ImagePickerActivity** by passing required intent data. Once the image is cropped, you can received the path of the cropped image in **onActivityResult** method.
+```kt
 class ImagePickerActivity : AppCompatActivity() {
 
   private var lockAspectRatio = false
@@ -352,14 +357,10 @@ If you want additional options, you can customize the image picker activity.
 Deleting Cached Images:
 ==========
 While the image are taken with camera, they will stored in cached directory. You can clear the cached images once the bitmap is utilized.
-```Kotlin
+```kt
 // Clearing older images from cache directory
 // don't call this line if you want to choose multiple images in the same activity
 // call this once the bitmap(s) usage is over
 ImagePickerActivity.clearCache(this)
 ```
-
-uCrop
----
-Thanks to [Yalantis](https://github.com/Yalantis) for providing such a beautiful cropping ([uCrop](https://github.com/Yalantis/uCrop)) library. This example uses the uCrop library for cropping functionality.
 
